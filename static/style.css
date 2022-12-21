@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 50px;
+    padding: 20px 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculatorContainer {
+    border: 3px solid saddlebrown;
+    min-width: 470px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 25%;
+}
+
+
+
+.numpadContainer, .screen {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 100%;
+    background-color:black;
+    padding: 0 30px;
+    padding: 15px 20px;
+}
+
+.screen{
+    height: 100px;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 25px;
+    background: black;
+    color:#fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.numpad{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 25%;
+    height: 90px;
+    border: 5px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #524e4e;
+    color: white;
+    font-size: 30px;
+}
+
+.ac, .backspace, .zero {
+    flex: 0 1 50%;
+    border-radius: 50px;
+}
+
+.grey {
+    background-color: #b0b0b0;
+    color: black;
+}
+
+.blue {
+    background-color: #1e81b0;
+}
+
+
+
+.positive {
+    font-size: 25px;
+    margin-top: -10px;
+}
+.negative {
+    font-size: 30px;
+    margin-bottom: -8px;
+}
+
+.signdivider {
+    transform: rotate(20deg) ;
+}
+
+.exponent {
+    font-size: 20px;
+    margin-top: -25px;
+    margin-left: 3px;
+}
+
+.base {
+    margin-left: 3px;
+}
+
+.divider {
+    font-size: 35px;
+}
