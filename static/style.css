@@ -28,7 +28,7 @@ main {
 }
 
 .calculatorContainer {
-    border: 3px solid saddlebrown;
+    border: 5px solid rgb(77, 77, 77);
     min-width: 470px;
     display: flex;
     flex-wrap: wrap;
@@ -87,29 +87,6 @@ main {
 
 
 
-.positive {
+.signChange, .power {
     font-size: 25px;
-    margin-top: -10px;
-}
-.negative {
-    font-size: 30px;
-    margin-bottom: -8px;
-}
-
-.signdivider {
-    transform: rotate(20deg) ;
-}
-
-.exponent {
-    font-size: 20px;
-    margin-top: -25px;
-    margin-left: 3px;
-}
-
-.base {
-    margin-left: 3px;
-}
-
-.divider {
-    font-size: 35px;
 }
