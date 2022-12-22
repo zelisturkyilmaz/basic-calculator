@@ -24,6 +24,7 @@ equal.addEventListener('click', () => {
     calculationScreen.textContent = `${firstOperand} ${operator} ${secondOperand} =`;
     let result = operate( operator, firstOperand, secondOperand);
     currentScreen.textContent = result;
+    //Bug? 
     firstOperand = result;
     secondOperand = '';
 })
