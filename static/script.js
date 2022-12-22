@@ -1,6 +1,7 @@
 const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const equal = document.querySelector('.equal');
+const clearAllButton = document.querySelector('.ac');
 
 const calculationScreen = document.querySelector('.calculation');
 const currentScreen = document.querySelector('.currentOperation');
@@ -25,6 +26,14 @@ equal.addEventListener('click', () => {
     currentScreen.textContent = result;
     firstOperand = result;
     secondOperand = '';
+})
+
+clearAllButton.addEventListener('click', () => {
+    calculationScreen.textContent = '';
+    cleanCurrentScreen();
+    firstOperand = '';
+    secondOperand = '';
+    operatorPressed = false;
 })
 
 
