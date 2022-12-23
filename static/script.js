@@ -5,6 +5,7 @@ const clearAllButton = document.querySelector('.ac');
 const signChangeButton = document.querySelector('.signChange');
 const backSpaceButton = document.querySelector('.backspace');
 const decimalButton = document.querySelector('.decimal');
+const numpad = document.querySelectorAll('.numpad');
 
 const calculationScreen = document.querySelector('.calculation');
 const currentScreen = document.querySelector('.currentOperation');
@@ -13,6 +14,23 @@ let firstOperand = '';
 let secondOperand = '';
 let operator = '';
 let operatorPressed = false;
+
+
+
+
+
+numpad.forEach( (key) => {
+    key.addEventListener('transitionend', removeTransition)
+    function removeTransition(e) {
+        if(e.propertyName !== "transform") return;
+        this.classList.remove("clicked");
+    }
+    key.addEventListener('click', () =>{
+        key.classList.add('clicked');
+    })
+}
+)
+
 
 
 numbers.forEach( number => {
@@ -41,7 +59,11 @@ signChangeButton.addEventListener('click', () => {
 backSpaceButton.addEventListener('click', () => {
     let currentOperand = currentScreen.textContent.split('');
     currentOperand.pop();
-    currentScreen.textContent = currentOperand.join('');
+    if (currentOperand.length === 0) {
+        currentScreen.innerHTML = '<br>';
+    } else {
+        currentScreen.textContent = currentOperand.join('');
+    }
     if (operator === '') {
         firstOperand = currentScreen.textContent;
     } else {
@@ -50,7 +72,7 @@ backSpaceButton.addEventListener('click', () => {
     if (calculationScreen.textContent.includes('=') && firstOperand === '') {
         clearAllCalculation();
     }
-
+    
 });
 
 decimalButton.addEventListener('click', () => {
@@ -87,7 +109,7 @@ function addOperator(event) {
     if (firstOperand !== '' || secondOperand !== '' || operator !== ''){
         calculate();
     }
-    if (event.target.textContent === 'x^y') {
+    if (event.target.classList.contains('power')) {
         operator = '^';
         operatorPressed = true;
     } else {
@@ -96,7 +118,7 @@ function addOperator(event) {
     }
 
     calculationScreen.textContent = `${firstOperand} ${operator}`;
-    cleanCurrentScreen();
+    currentScreen.innerHTML = '<br>'
 
 }
 

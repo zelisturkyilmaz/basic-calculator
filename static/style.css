@@ -95,11 +95,20 @@ main {
     background-color: #524e4e;
     color: white;
     font-size: 25px;
+    transition: all .1s ease;
 }
+
+
 
 .ac, .backspace, .zero {
     flex: 0 1 50%;
     border-radius: 50px;
+}
+
+
+
+.blue {
+    background-color: #1e81b0;
 }
 
 .grey {
@@ -107,12 +116,17 @@ main {
     color: black;
 }
 
-.blue {
-    background-color: #1e81b0;
-}
-
+.clicked {
+    transform: scale(1.03);
+    background-color: rgb(198, 198, 198)
+  }
 
 
 .signChange, .power {
     font-size: 25px;
+}
+
+.exponent {
+    font-size: 15px;
+    margin-top: -15px;
 }
