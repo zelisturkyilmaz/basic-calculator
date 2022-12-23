@@ -2,7 +2,7 @@
 
 This project is a simple, yet powerful calculator that allows you to perform basic arithmetic operations such as addition, subtraction, multiplication, division, and more. It is written in HTML, CSS, and JavaScript, and uses a flex layout for the interface.
 
-[Simple Calculator](https://basic-calculator-zlstrkylmz.netlify.app/)
+[Simple Calculator](https://simple-awesome-calculator.netlify.app/)
 
 ## Features
 
