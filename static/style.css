@@ -6,6 +6,7 @@
 
 body{
     min-height: 100vh;
+    background-color: #B0B0B0;
 
 }
 
@@ -17,9 +18,30 @@ header {
 }
 
 .title {
-    font-size: 50px;
+    font-size: 45px;
     padding: 20px 0;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    overflow: hidden;
+    width: 0;
+    white-space: nowrap;
+    animation: typing 2.5s forwards;
 }
+
+
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+.githubIcon {
+    margin-top: -25px;
+    margin-right: 10px;
+}
+
+
 
 main {
     display: flex;
@@ -28,7 +50,7 @@ main {
 }
 
 .calculatorContainer {
-    border: 5px solid rgb(77, 77, 77);
+    border: 5px solid #524e4e;
     min-width: 470px;
     display: flex;
     flex-wrap: wrap;
@@ -37,38 +59,42 @@ main {
 
 
 
-.numpadContainer, .screen {
+.numpadContainer{
     display: flex;
     flex-wrap: wrap;
     flex: 0 1 100%;
-    background-color:black;
-    padding: 0 30px;
+    background-color:#000000;
     padding: 15px 20px;
 }
 
-.screen{
-    height: 100px;
-    justify-content: center;
-    align-items: flex-end;
-    font-size: 25px;
-    background: black;
-    color:#fff;
+.screen {
+    height: 140px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex: 0 1 100%;
+    font-size: 40px;
+    background-color: #524e4e;
+    border: 20px solid black;
+    color:#fff;
+    padding: 0 35px;
+    padding-bottom: 5px;
 }
+
 
 .numpad{
     display:flex;
     justify-content: center;
     align-items: center;
     flex: 0 1 25%;
-    height: 90px;
+    height: 85px;
     border: 5px solid black;
     border-radius: 50%;
     cursor: pointer;
     background-color: #524e4e;
     color: white;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .ac, .backspace, .zero {
