@@ -101,7 +101,7 @@ function addOperator(event) {
 }
 
 function addOperand(event) {
-    if ( calculationScreen.textContent.includes('=')) return;
+    // if ( calculationScreen.textContent.includes('=')) return;
     if ( operatorPressed === false) {
         key = event.target.textContent;
         if (currentScreen.textContent === '0') {
