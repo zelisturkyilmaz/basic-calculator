@@ -2,6 +2,7 @@ const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const equal = document.querySelector('.equal');
 const clearAllButton = document.querySelector('.ac');
+const signChangeButton = document.querySelector('.signChange');
 
 const calculationScreen = document.querySelector('.calculation');
 const currentScreen = document.querySelector('.currentOperation');
@@ -30,6 +31,16 @@ clearAllButton.addEventListener('click', () => {
     operatorPressed = false;
 })
 
+signChangeButton.addEventListener('click', () => {
+    let currentOperand = currentScreen.textContent;
+    if (currentOperand === '') return;
+    currentScreen.textContent = (Number(currentOperand) < 0) ? Math.abs(Number(currentOperand)) : 0 - Number(currentOperand);
+    if (operator === '') {
+        firstOperand = currentScreen.textContent;
+    } else {
+        secondOperand = currentScreen.textContent;
+    }
+});
 
 function calculate() {
     if( firstOperand === '' || secondOperand === '' || operator === '') return;
