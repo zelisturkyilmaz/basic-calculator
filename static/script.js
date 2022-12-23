@@ -11,6 +11,7 @@ let secondOperand = '';
 let operator = '';
 let operatorPressed = false;
 
+
 numbers.forEach( number => {
     number.addEventListener('click', addOperand);
 })
@@ -19,15 +20,7 @@ operators.forEach( operator => {
     operator.addEventListener('click', addOperator);
 });
 
-equal.addEventListener('click', () => {
-    if( firstOperand === '' || secondOperand === '' || operator === '') return;
-    calculationScreen.textContent = `${firstOperand} ${operator} ${secondOperand} =`;
-    let result = operate( operator, firstOperand, secondOperand);
-    currentScreen.textContent = result;
-    //Bug? 
-    firstOperand = result;
-    secondOperand = '';
-})
+equal.addEventListener('click', calculate )
 
 clearAllButton.addEventListener('click', () => {
     calculationScreen.textContent = '';
@@ -38,9 +31,23 @@ clearAllButton.addEventListener('click', () => {
 })
 
 
+function calculate() {
+    if( firstOperand === '' || secondOperand === '' || operator === '') return;
+    calculationScreen.textContent = `${firstOperand} ${operator} ${secondOperand} =`;
+    let result = operate( operator, firstOperand, secondOperand);
+    currentScreen.textContent = result;
+    firstOperand = result;
+    secondOperand = '';
+    operator = '';
+    operatorPressed = false;
+}
 
 function addOperator(event) {
     if (firstOperand === '') return;
+
+    if (firstOperand !== '' || secondOperand !== '' || operator !== ''){
+        calculate();
+    }
     if (event.target.textContent === 'x^y') {
         operator = '^';
         operatorPressed = true;
@@ -48,13 +55,14 @@ function addOperator(event) {
         operator = event.target.textContent;
         operatorPressed = true;
     }
-    if (calculationScreen.textContent === '' || calculationScreen.textContent.includes('=')) {
-        calculationScreen.textContent = `${firstOperand} ${operator}`;
-        cleanCurrentScreen();
-    }
+
+    calculationScreen.textContent = `${firstOperand} ${operator}`;
+    cleanCurrentScreen();
+
 }
 
 function addOperand(event) {
+    if ( calculationScreen.textContent.includes('=')) return;
     if ( operatorPressed === false) {
         key = event.target.textContent;
         if (currentScreen.textContent === '') {
