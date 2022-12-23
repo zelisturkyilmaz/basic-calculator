@@ -4,6 +4,7 @@ const equal = document.querySelector('.equal');
 const clearAllButton = document.querySelector('.ac');
 const signChangeButton = document.querySelector('.signChange');
 const backSpaceButton = document.querySelector('.backspace');
+const decimalButton = document.querySelector('.decimal');
 
 const calculationScreen = document.querySelector('.calculation');
 const currentScreen = document.querySelector('.currentOperation');
@@ -51,6 +52,23 @@ backSpaceButton.addEventListener('click', () => {
     }
 
 });
+
+decimalButton.addEventListener('click', () => {
+    let newOperand = currentScreen.textContent.split('');
+    if (currentScreen.textContent === ''){
+        newOperand.push('0.');
+    } else {
+        newOperand.push('.');
+    }
+    if(currentScreen.textContent.includes('.')) return;
+    
+    currentScreen.textContent = newOperand.join('');
+    if (operator === '') {
+        firstOperand = currentScreen.textContent;
+    } else {
+        secondOperand = currentScreen.textContent;
+    }
+})
 
 function calculate() {
     if( firstOperand === '' || secondOperand === '' || operator === '') return;
