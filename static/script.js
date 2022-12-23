@@ -56,7 +56,12 @@ signChangeButton.addEventListener('click', () => {
     }
 });
 
-backSpaceButton.addEventListener('click', () => {
+backSpaceButton.addEventListener('click', backspaceElement );
+
+decimalButton.addEventListener('click', addDecimal)
+
+function backspaceElement() {
+
     let currentOperand = currentScreen.textContent.split('');
     currentOperand.pop();
     if (currentOperand.length === 0) {
@@ -72,25 +77,27 @@ backSpaceButton.addEventListener('click', () => {
     if (calculationScreen.textContent.includes('=') && firstOperand === '') {
         clearAllCalculation();
     }
-    
-});
 
-decimalButton.addEventListener('click', () => {
+}
+
+function addDecimal() {
+
     let newOperand = currentScreen.textContent.split('');
-    if (currentScreen.textContent === ''){
+    if (currentScreen.textContent === '') {
         newOperand.push('0.');
     } else {
         newOperand.push('.');
     }
     if (currentScreen.textContent.includes('.')) return;
-    
+
     currentScreen.textContent = newOperand.join('');
     if (operator === '') {
         firstOperand = currentScreen.textContent;
     } else {
         secondOperand = currentScreen.textContent;
     }
-})
+
+}
 
 function calculate() {
     if( firstOperand === '' || secondOperand === '' || operator === '') return;
