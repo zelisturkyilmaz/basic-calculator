@@ -60,7 +60,7 @@ decimalButton.addEventListener('click', () => {
     } else {
         newOperand.push('.');
     }
-    if(currentScreen.textContent.includes('.')) return;
+    if (currentScreen.textContent.includes('.')) return;
     
     currentScreen.textContent = newOperand.join('');
     if (operator === '') {
@@ -103,6 +103,10 @@ function addOperator(event) {
 function addOperand(event) {
     // if ( calculationScreen.textContent.includes('=')) return;
     if ( operatorPressed === false) {
+        if (firstOperand.length === 20) return;
+        if (firstOperand.includes('.')) {
+            if(firstOperand.slice(firstOperand.indexOf('.') + 1).length > 3) return;
+        }
         key = event.target.textContent;
         if (currentScreen.textContent === '0') {
             if (key === '0') {
@@ -116,6 +120,10 @@ function addOperand(event) {
             currentScreen.textContent = firstOperand;
         }
     } else {
+        if (secondOperand.length === 20) return;
+        if (secondOperand.includes('.')) {
+            if(secondOperand.slice(secondOperand.indexOf('.') + 1).length > 3) return;
+        }
         key = event.target.textContent;
         if (currentScreen.textContent === '0') {
             if (key === '0') {
@@ -148,30 +156,30 @@ function operate(operator, firstOperand , secondOperand) {
     let b = Number(secondOperand);
     switch (operator) {
         case '+':
-            return a + b;
+            return Math.round((a + b) * 10000) / 10000;
             break;
         case '-':
-            return a - b;
+            return Math.round((a - b) * 10000) / 10000;
             break;
         case 'x':
-            return a * b;
+            return Math.round((a * b) * 10000) / 10000;
             break;
         case '÷':
             if (b === 0) {
                 return null;
             } else {
-                return a / b;
+                return Math.round((a / b) * 10000) / 10000;
             }
             break;
         case '%':
             if (b === 0) {
                 return null;
             } else {
-                return a % b;
+                return Math.round((a % b) * 10000) / 10000;
             }
             break;
         case '^':
-            return a ** b;
+            return Math.round((a ** b) * 10000) / 10000;
             break;
         default:
             return null;
