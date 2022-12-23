@@ -3,6 +3,7 @@ const operators = document.querySelectorAll('.operator');
 const equal = document.querySelector('.equal');
 const clearAllButton = document.querySelector('.ac');
 const signChangeButton = document.querySelector('.signChange');
+const backSpaceButton = document.querySelector('.backspace');
 
 const calculationScreen = document.querySelector('.calculation');
 const currentScreen = document.querySelector('.currentOperation');
@@ -23,13 +24,7 @@ operators.forEach( operator => {
 
 equal.addEventListener('click', calculate )
 
-clearAllButton.addEventListener('click', () => {
-    calculationScreen.textContent = '';
-    cleanCurrentScreen();
-    firstOperand = '';
-    secondOperand = '';
-    operatorPressed = false;
-})
+clearAllButton.addEventListener('click', clearAllCalculation)
 
 signChangeButton.addEventListener('click', () => {
     let currentOperand = currentScreen.textContent;
@@ -40,6 +35,21 @@ signChangeButton.addEventListener('click', () => {
     } else {
         secondOperand = currentScreen.textContent;
     }
+});
+
+backSpaceButton.addEventListener('click', () => {
+    let currentOperand = currentScreen.textContent.split('');
+    currentOperand.pop();
+    currentScreen.textContent = currentOperand.join('');
+    if (operator === '') {
+        firstOperand = currentScreen.textContent;
+    } else {
+        secondOperand = currentScreen.textContent;
+    }
+    if (calculationScreen.textContent.includes('=') && firstOperand === '') {
+        clearAllCalculation();
+    }
+
 });
 
 function calculate() {
@@ -105,6 +115,14 @@ function addOperand(event) {
 
 function cleanCurrentScreen() {
     currentScreen.textContent = '';
+}
+
+function clearAllCalculation() {
+    calculationScreen.textContent = '';
+    cleanCurrentScreen();
+    firstOperand = '';
+    secondOperand = '';
+    operatorPressed = false;
 }
 
 function operate(operator, firstOperand , secondOperand) {
