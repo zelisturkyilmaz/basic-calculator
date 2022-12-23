@@ -104,7 +104,7 @@ function addOperand(event) {
     if ( calculationScreen.textContent.includes('=')) return;
     if ( operatorPressed === false) {
         key = event.target.textContent;
-        if (currentScreen.textContent === '') {
+        if (currentScreen.textContent === '0') {
             if (key === '0') {
                 return
             } else {
@@ -117,7 +117,7 @@ function addOperand(event) {
         }
     } else {
         key = event.target.textContent;
-        if (currentScreen.textContent === '') {
+        if (currentScreen.textContent === '0') {
             if (key === '0') {
                 return
             } else {
@@ -137,7 +137,7 @@ function cleanCurrentScreen() {
 
 function clearAllCalculation() {
     calculationScreen.textContent = '';
-    cleanCurrentScreen();
+    currentScreen.textContent = '0';
     firstOperand = '';
     secondOperand = '';
     operatorPressed = false;
