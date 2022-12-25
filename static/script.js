@@ -18,6 +18,8 @@ let operatorPressed = false;
 
 
 
+window.addEventListener('keydown', keyboardInputHandler);
+
 
 numpad.forEach( (key) => {
     key.addEventListener('transitionend', removeTransition)
@@ -38,7 +40,7 @@ numbers.forEach( number => {
 })
 
 operators.forEach( operator => {
-    operator.addEventListener('click', addOperator, true);
+    operator.addEventListener('click', addOperator);
 });
 
 equal.addEventListener('click', calculate )
@@ -132,11 +134,11 @@ function addOperator(event) {
 function addOperand(event) {
     // if ( calculationScreen.textContent.includes('=')) return;
     if ( operatorPressed === false) {
-        if (firstOperand.length === 20) return;
+        if (firstOperand.length === 16) return;
         if (firstOperand.includes('.')) {
             if(firstOperand.slice(firstOperand.indexOf('.') + 1).length > 3) return;
         }
-        key = event.target.textContent;
+        let key = event.target.textContent;
         if (currentScreen.textContent === '0') {
             if (key === '0') {
                 return
@@ -149,11 +151,11 @@ function addOperand(event) {
             currentScreen.textContent = firstOperand;
         }
     } else {
-        if (secondOperand.length === 20) return;
+        if (secondOperand.length === 16) return;
         if (secondOperand.includes('.')) {
             if(secondOperand.slice(secondOperand.indexOf('.') + 1).length > 3) return;
         }
-        key = event.target.textContent;
+        let key = event.target.textContent;
         if (currentScreen.textContent === '0') {
             if (key === '0') {
                 return
@@ -214,3 +216,47 @@ function operate(operator, firstOperand , secondOperand) {
             return null;
     }
 }
+
+const keys = {
+    shiftPressed : false,
+    powerPressed : false,
+    remainerPressed : false,
+    multiplyPressed : false,
+    addPressed : false,
+    
+};
+
+function keyboardInputHandler(e) {
+    let key = document.querySelector(`button[data-key='${e.keyCode}']`);
+    if (e.code === 'ShiftRight') keys.shiftPressed = true;
+    if (e.code === 'Digit6') keys.powerPressed = true;
+    if (keys.shiftPressed && keys.powerPressed) {
+        key = document.querySelector('button[data-key="power"]');
+    }
+    if (e.code === 'Digit5') keys.remainerPressed = true;
+    if (keys.shiftPressed && keys.remainerPressed) {
+        key = document.querySelector('button[data-key="remainer"]');
+    } 
+    if (e.code === 'Digit8') keys.multiplyPressed = true;
+    if (keys.shiftPressed && keys.multiplyPressed) {
+        key = document.querySelector('button[data-key="multiply"]');
+    } 
+    if (e.code === 'Equal') keys.addPressed = true;
+    if (keys.shiftPressed && keys.addPressed) {
+        key = document.querySelector('button[data-key="add"]');
+    }
+
+    key.click();
+
+    // console.log(e)
+};
+
+
+window.addEventListener('keyup', (e) => {
+    if (e.code === 'Shift') keys.shiftPressed = false;
+    if (e.code === 'Digit6') keys.powerPressed = false;
+    if (e.code === 'Digit5') keys.remainerPressed = false;
+    if (e.code === 'Digit8') keys.multiplyPressed = false;
+    if (e.code === 'Equal') keys.addPressed = false;
+  });
+
