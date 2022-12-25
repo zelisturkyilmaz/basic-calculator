@@ -38,7 +38,7 @@ numbers.forEach( number => {
 })
 
 operators.forEach( operator => {
-    operator.addEventListener('click', addOperator);
+    operator.addEventListener('click', addOperator, true);
 });
 
 equal.addEventListener('click', calculate )
@@ -116,7 +116,7 @@ function addOperator(event) {
     if (firstOperand !== '' || secondOperand !== '' || operator !== ''){
         calculate();
     }
-    if (event.target.classList.contains('power')) {
+    if (event.target.classList.contains('power') || event.target.classList.contains('powerDiv')) {
         operator = '^';
         operatorPressed = true;
     } else {
