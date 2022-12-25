@@ -7,8 +7,9 @@ This project is a simple, yet powerful calculator that allows you to perform bas
 ## Features
 
 - Perform basic arithmetic operations
-- Use of decimals and negative numbers.
+- Use of decimals and negative numbers
 - Clear input and output fields with a single click
+- Keyboard support added for TKL keyboards
 
 ## Project structure
 The project includes the following files:
